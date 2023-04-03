@@ -1,0 +1,48 @@
+.menu-list.top{
+    margin-left: 0;
+}
+
+.menu-list.nav{
+    margin-left: 20px;
+}
+
+.menu-list.top ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-list a:hover {
+    text-decoration: none;
+}
+
+.menu-list.top a{
+    color: #61dafb;
+}
+
+.menu-list.top a.active{
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-list.nav a.active{
+    color: rgb(255, 89, 0);
+    text-decoration: none;
+}
+
+.menu-list.nav ul {
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 20px;
+    list-style: none;
+    text-align: left;
+}
+
+.menu-list.nav ul li {
+    margin-bottom: 5px;
+}
+

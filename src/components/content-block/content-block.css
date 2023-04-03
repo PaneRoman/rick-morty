@@ -1,0 +1,35 @@
+.content-block {
+    width: 1200px;
+    margin-left: 120px;
+    margin-right: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.content-block.posts {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.content-block.gallery {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content-block.home h2, .content-block.about h2,
+.content-block.contacts h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.content-block.home p, .content-block.about p,
+.content-block.contacts p {
+    margin-bottom: 15px;
+}
+
+.content-block.contacts .contacts-paragraph {
+    margin-bottom: 2px;
+}

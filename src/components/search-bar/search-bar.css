@@ -1,0 +1,8 @@
+.search-bar input{
+    height: 28px;
+    width: 200px;
+}
+
+.search-bar.header {
+    margin-right: 50px;
+}

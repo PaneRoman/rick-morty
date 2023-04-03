@@ -1,0 +1,12 @@
+.post-item {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .2);
+    text-align: left;
+}
+
+.post-item h2 {
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
