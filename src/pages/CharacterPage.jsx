@@ -5,7 +5,8 @@ import SearchBar2 from "../components/SearchBar2/SearchBar2";
 
 import { getData } from "../Utils";
 
-import './character-page.css';
+// import './character-page.css';
+import './character-page.scss';
 
 export default function CharacterInfo() {
 

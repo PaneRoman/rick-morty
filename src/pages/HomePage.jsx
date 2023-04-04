@@ -8,7 +8,9 @@ import PhotoItem2 from '../components/PhotoItem2/PhotoItem2';
 import {getData, createFakeSkeletonData, sortData} from '../Utils';
 
 import rmLogo from '../img/rick_morty_logo.png';
-import './home-page.css';
+
+// import './home-page.css';
+import './home-page.scss';
 
 
 
