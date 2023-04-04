@@ -5,7 +5,8 @@ import getData from "../../Utils";
 
 import PhotoItem2 from "../PhotoItem2/PhotoItem2";
 
-import './content-block2.css';
+// import './content-block2.css';
+import './content-block2.scss';
 
 
 function ContentBlock2({renderData}) {

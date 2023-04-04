@@ -3,7 +3,8 @@ import { Routes, Route, Link } from 'react-router-dom';
 
 import CharacterInfo from '../../pages/CharacterPage';
 
-import './photo-item2.css';
+// import './photo-item2.css';
+import './photo-item2.scss';
 
 
 export default function PhotoItem2(props) {
