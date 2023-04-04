@@ -1,16 +1,12 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-
-import SearchBar2 from "../components/SearchBar2/SearchBar2";
 
 import { getData } from "../Utils";
 
-import './character-page.css';
+import './character-page.scss';
 
 export default function CharacterInfo() {
-
-    // console.log('renderDataCharacterInfo >>>', renderData);
-
+    
     const {id} = useParams();
     console.log(useParams());
 
@@ -24,7 +20,7 @@ export default function CharacterInfo() {
             .then(data => setCharacter(data))
     }, [id])
 
-// .then(res => console.log('res >>>', res))
+
     return(
         <div className="rick-morty-character">
             <div className="button-wrapper">
@@ -33,12 +29,12 @@ export default function CharacterInfo() {
             {character && (
                 <>
                     <div className="image-character-wrapper">
-                        <img src={character['image']} alt="big hero image" />
+                        <img src={character['image']} alt="big hero" />
                     </div>
                     
                     <h1 className="character-name">{character['name']}</h1>
                     <h2 className="character-info-title">Informations</h2>
-                    {/* <SearchBar2 /> */}
+                    
                     <div className="character-info">
                         <div className="info-item">
                             <h2>ID</h2>
@@ -65,12 +61,6 @@ export default function CharacterInfo() {
                             <h3>{character['type']}</h3>
                         </div>
                         
-                        
-                        
-                        
-                       
-                        
-                        {/* <Link to="/" className="go-back">home page link</Link>  */}
                     </div>
                     
                 </>

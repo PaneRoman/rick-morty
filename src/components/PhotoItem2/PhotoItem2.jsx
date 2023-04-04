@@ -1,9 +1,7 @@
 import { Skeleton, SkeletonText } from '@chakra-ui/react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import CharacterInfo from '../../pages/CharacterPage';
-
-import './photo-item2.css';
+import './photo-item2.scss';
 
 
 export default function PhotoItem2(props) {
@@ -15,7 +13,7 @@ export default function PhotoItem2(props) {
             <Link to={`/${id}`} className="photo-item2-wrapper">
                 <Skeleton isLoaded={!loading} height='188px'>
                     <div className='image-wrapper'>
-                        <img src={image} alt="Hero image" />
+                        <img src={image} alt="hero" />
                     </div>
                 </Skeleton>
                 <div className="text-wrapper">
