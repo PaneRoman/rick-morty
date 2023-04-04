@@ -1,3 +1,7 @@
+.rick-morty-home {
+    max-width: 1050px;
+    margin: 86px auto 188px auto;
+}
 
 .rick-morty-home .rick-morty-content {
     box-sizing: border-box;
@@ -5,10 +9,11 @@
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
-    /* justify-content: space-around; */
-    gap: 20px;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .rick-morty-home .rick-morty-logo {
     margin: 0 auto 16px auto;
 }
+

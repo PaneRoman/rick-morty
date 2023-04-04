@@ -5,7 +5,7 @@ import SearchBar2 from '../components/SearchBar2/SearchBar2';
 import ContentBlock2 from '../components/ContentBlock2/ContentBlock2';
 import PhotoItem2 from '../components/PhotoItem2/PhotoItem2';
 
-import {getData, createFakeSkeletonData} from '../Utils';
+import {getData, createFakeSkeletonData, sortData} from '../Utils';
 
 import rmLogo from '../img/rick_morty_logo.png';
 import './home-page.css';
@@ -27,12 +27,14 @@ export default function HomePage() {
             getData('/')
             // .then(res => console.log(res))
             .then(data => {
-                const charactersArr = data.results;
-                charactersArr.sort((a, b) => a['name'].localeCompare(b['name']));
-                console.log('charactersArr>>>', charactersArr);
+                const result = sortData(data.results);
+                console.log('resultSortData>>>', result);
+                // const charactersArr = data.results;
+                // charactersArr.sort((a, b) => a['name'].localeCompare(b['name']));
+                // console.log('charactersArr>>>', charactersArr);
 
-                localStorage.setItem('characters', JSON.stringify(charactersArr));
-                setCharacters(charactersArr);
+                localStorage.setItem('characters', JSON.stringify(result));
+                setCharacters(result);
             })
         } else {
             setCharacters(JSON.parse(localStorageData));
@@ -45,18 +47,20 @@ export default function HomePage() {
         if (searchName) {
             console.log('searchName2>>>', searchName);
 
-            const queryParam = `?name=${searchName}`;
-            console.log('queryParam>>>', queryParam);
+            const querySearchParam = `?name=${searchName}`;
+            console.log('querySearchParam>>>', querySearchParam);
 
-            getData(queryParam)
+            getData(querySearchParam)
                 // .then(res => console.log(res))
                 .then(data => {
-                    const searchArr = data.results;
-                    searchArr.sort((a, b) => a['name'].localeCompare(b['name']));
-                    console.log('searchArr>>>', searchArr);
+                    const result = sortData(data.results);
+                    console.log('resultSortData>>>', result);
+                    // const searchArr = data.results;
+                    // searchArr.sort((a, b) => a['name'].localeCompare(b['name']));
+                    // console.log('searchArr>>>', searchArr);
 
-                    localStorage.setItem('characters', JSON.stringify(searchArr));
-                    setCharacters(searchArr);
+                    localStorage.setItem('characters', JSON.stringify(result));
+                    setCharacters(result);
                 })
         }
         

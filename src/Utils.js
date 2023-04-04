@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
+
 export async function getData(param) {
     console.log('param>>>', param)
     const response = await fetch(`https://rickandmortyapi.com/api/character/${param}`);
@@ -24,4 +25,8 @@ export function debonce(callback, delay) {
             callback.apply(this, args)
         }, delay);
     }
+}
+
+export function sortData(data) {
+    return data.sort((a, b) => a['name'].localeCompare(b['name']));
 }

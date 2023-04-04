@@ -4,6 +4,10 @@
     color: #081F32;
 }
 
+.rick-morty-character {
+    margin: 0 auto 142px auto;
+}
+
 .rick-morty-character > .image-character-wrapper {
     width: 300px;
     height: 300px;
@@ -16,6 +20,7 @@
 .rick-morty-character .character-name {
     font-size: 48px;
     font-weight: 400;
+    text-align: center;
 }
 
 .rick-morty-character .character-info-title {
@@ -23,7 +28,7 @@
     font-weight: 500;
     line-height: 24px;
     color: #8E8E93;
-    ;
+    text-align: center;
 }
 
 .rick-morty-character .character-info {
@@ -52,7 +57,7 @@
 
 .rick-morty-character .button-wrapper {
     text-align: left;
-    margin: 21px 0;
+    margin: 21px 0 21px 22px;
 }
 
 .rick-morty-character .button-wrapper .go-back {
