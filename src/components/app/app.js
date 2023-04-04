@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from "uuid";
 import CharacterInfo from "../../pages/CharacterPage";
 import HomePage from "../../pages/HomePage";
 
-// import './app.css';
 import './app.scss';
 
 
