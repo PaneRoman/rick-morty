@@ -1,6 +1,7 @@
 import { debonce } from '../../Utils';
 
-import './search-bar2.css';
+// import './search-bar2.css';
+import './search-bar2.scss';
 
 
 export default function SearchBar2({setSearchName}) {
