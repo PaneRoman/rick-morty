@@ -12,54 +12,16 @@ import './home-page.scss';
 
 export default function HomePage() {
    
-    // const data = localStorage.getItem('characters') ? JSON.parse(localStorage.getItem('characters')) : createFakeSkeletonData();
     const search = localStorage.getItem('searchValue') ? JSON.parse(localStorage.getItem('searchValue')) : '';
 
     const [characters, setCharacters] = useState(createFakeSkeletonData());
     const [searchName, setSearchName] = useState(search);
-    console.log('searchName>>>', searchName);
-    console.log('characters>>>', characters);
-
-    // const localStorageData = localStorage.getItem('characters');
-    // const localStorageSearchValue = localStorage.getItem('searchValue');
-
-    // const searchValue = localStorageSearchValue || searchName;
+    
     const searchValue = searchName || '';
-    console.log('searchValue>>>', searchValue);
-
-    useEffect(() => {
-        // const localStorageData = localStorage.getItem('characters');
-        // console.log('localStorageData>>>', localStorageData); // null(false) or some data(true)
-
-        // if(!localStorageData) {
-        //     getData('/')
-        //     // .then(res => console.log(res))
-        //         .then(data => {
-        //             const result = sortData(data.results);
-        //             // console.log('resultSortData>>>', result);
-                    
-        //             localStorage.setItem('characters', JSON.stringify(result));
-        //             setCharacters(result);
-        //         })
-
-        // } else {
-        //     setCharacters(JSON.parse(localStorageData));
-        // }
-
-        // const localStorageData = localStorage.getItem('characters') || '';
-        // const localStorageSearchValue = localStorage.getItem('searchValue') || '';
-
-        // console.log('localStorageData>>>', localStorageData);
-        // console.log('localStorageSearchValue>>>', localStorageSearchValue);
-        // if(localStorageData) setCharacters(JSON.parse(localStorageData));
-        // if(localStorageSearchValue) setSearchName(JSON.parse(localStorageSearchValue));
-
-        
-    }, [])
+   
 
     useEffect(() => {
         
-
         if (searchName) {
             console.log('searchName2>>>', searchName);
 
@@ -70,9 +32,6 @@ export default function HomePage() {
                 // .then(res => console.log(res))
                 .then(data => {
                     const result = sortData(data.results);
-                    // console.log('resultSortData>>>', result);
-                    
-                    // localStorage.setItem('characters', JSON.stringify(result));
                     setCharacters(result);
                 })
 
@@ -84,9 +43,6 @@ export default function HomePage() {
             // .then(res => console.log(res))
                 .then(data => {
                     const result = sortData(data.results);
-                    // console.log('resultSortData>>>', result);
-                    
-                    // localStorage.setItem('characters', JSON.stringify(result));
                     setCharacters(result);
                 })
 

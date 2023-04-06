@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import { debonce } from '../../Utils';
-
 import './search-bar2.scss';
 
 
@@ -13,9 +11,7 @@ export default function SearchBar2({searchValue, setSearchName}) {
 
     const onChange = (event) => {
         const value = event.target.value;
-        
         setSearch(value);
-
         setSearchName(value);
     }
     
