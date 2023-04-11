@@ -30,3 +30,13 @@ export function debonce(callback, delay) {
 export function sortData(data) {
     return data.sort((a, b) => a['name'].localeCompare(b['name']));
 }
+
+export function createRangeArr (first, last) {
+    let rangeArr = [];
+
+    for (let i = first; i <= last; i++) {
+        rangeArr.push(i);
+    }
+
+    return rangeArr;
+}

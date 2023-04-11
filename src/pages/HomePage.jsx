@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import SearchBar2 from '../components/SearchBar2/SearchBar2';
 import PhotoItem2 from '../components/PhotoItem2/PhotoItem2';
+import Pagination from "../components/Pagination/Pagination";
 
 import {getData, createFakeSkeletonData, debonce, sortData} from '../Utils';
 
@@ -16,7 +17,14 @@ export default function HomePage() {
 
     const [characters, setCharacters] = useState(createFakeSkeletonData());
     const [searchName, setSearchName] = useState(search);
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(20);
+    /**лимит 20 віддає АПИ https://rickandmortyapi.com/. Для функционала з полем Select, та вибором іншого значення
+     * лимита треба використовувати setLimit в цьому хуці
+    */
+
     
+
     const searchValue = searchName || '';
    
 
@@ -38,18 +46,23 @@ export default function HomePage() {
             localStorage.setItem('searchValue', JSON.stringify(searchName));
 
         } 
-        else {
-            getData('/')
+        
+        if (!searchName) {
+
+            const queryPage = `?page=${page}`;
+
+            getData(queryPage)
             // .then(res => console.log(res))
                 .then(data => {
                     const result = sortData(data.results);
+                    console.log('result>>>', result);
                     setCharacters(result);
                 })
 
             localStorage.setItem('searchValue', JSON.stringify(searchName));
         }
         
-    }, [searchName])
+    }, [searchName, page])
 
 
     return (
@@ -70,6 +83,8 @@ export default function HomePage() {
                     })
                 }
             </div>
+
+            <Pagination />
         </div>
     )
 }
