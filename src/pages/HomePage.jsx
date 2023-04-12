@@ -17,13 +17,15 @@ export default function HomePage() {
 
     const [characters, setCharacters] = useState(createFakeSkeletonData());
     const [searchName, setSearchName] = useState(search);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(37);
     const [limit, setLimit] = useState(20);
+    const [totalPages, setTotalPages] = useState(null);
+
+    console.log('totalPages>>>', totalPages);
     /**лимит 20 віддає АПИ https://rickandmortyapi.com/. Для функционала з полем Select, та вибором іншого значення
      * лимита треба використовувати setLimit в цьому хуці
     */
 
-    
 
     const searchValue = searchName || '';
    
@@ -41,6 +43,7 @@ export default function HomePage() {
                 .then(data => {
                     const result = sortData(data.results);
                     setCharacters(result);
+                    setTotalPages(data.info.pages);
                 })
 
             localStorage.setItem('searchValue', JSON.stringify(searchName));
@@ -57,6 +60,7 @@ export default function HomePage() {
                     const result = sortData(data.results);
                     console.log('result>>>', result);
                     setCharacters(result);
+                    setTotalPages(data.info.pages);
                 })
 
             localStorage.setItem('searchValue', JSON.stringify(searchName));
@@ -84,7 +88,9 @@ export default function HomePage() {
                 }
             </div>
 
-            <Pagination />
+            <Pagination 
+                totalPages={totalPages}
+                page={page} />
         </div>
     )
 }

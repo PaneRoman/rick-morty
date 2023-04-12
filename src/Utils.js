@@ -31,7 +31,37 @@ export function sortData(data) {
     return data.sort((a, b) => a['name'].localeCompare(b['name']));
 }
 
-export function createRangeArr (first, last) {
+export const returnPaginationRange = (totalPages, page, siblings) => {
+
+    console.log('totalPages2>>>', totalPages)
+    console.log('page2>>>', page)
+    
+    // const totalPageNoDot = 5;
+    if (totalPages <= 5) {
+        return createRangeArr(1, totalPages);
+    }
+
+    const showLeftDots = page > 4;
+    const showRightDots = page < totalPages - 4;
+
+    if (!showLeftDots && showRightDots) {
+        const leftRange = createRangeArr(1, 5);
+        return [...leftRange, ' ...', totalPages];
+    }
+
+    if (showLeftDots && !showRightDots) {
+        const rightRange = createRangeArr(totalPages - 5, totalPages);
+        return [1, '... ', ...rightRange];
+    }
+
+    if (showLeftDots && showRightDots) {
+        const middleRange = createRangeArr(page - 1, page + 1);
+        return [1, '... ', ...middleRange, ' ...', totalPages];
+    }
+} 
+
+
+function createRangeArr(first, last) {
     let rangeArr = [];
 
     for (let i = first; i <= last; i++) {
