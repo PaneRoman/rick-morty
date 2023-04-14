@@ -26,10 +26,33 @@ export default function HomePage() {
      * лимита треба використовувати setLimit в цьому хуці
     */
 
+    const handlePageChange = (value) => {
+
+        console.log('value>>>', value);
+        
+        if(!isNaN(value)) return setPage(value);
+        if (value === '&laquo;') setPage(1);
+        if (value === '&lsaquo;' && page !== 1) setPage(page - 1);
+        if (value === '&raquo;') setPage(totalPages);
+        if (value === '&rsaquo;' && page !== totalPages) setPage(page + 1);
+
+       
+
+        // (value === '&laquo;') 
+        //     ? setPage(1) 
+        //     : (value === '&lsaquo;' && page !== 1) 
+        //         ? setPage(page - 1) 
+        //         : (value === '&raquo;') 
+        //             ? setPage(totalPages) 
+        //             : (value === '&rsaquo;' && page !== totalPages) 
+        //                 ? setPage(page + 1) 
+        //                 : setPage(value);
+
+        
+    }
 
     const searchValue = searchName || '';
    
-
     useEffect(() => {
         
         if (searchName) {
@@ -90,7 +113,8 @@ export default function HomePage() {
 
             <Pagination 
                 totalPages={totalPages}
-                page={page} />
+                page={page}
+                onPageChange={handlePageChange} />
         </div>
     )
 }
