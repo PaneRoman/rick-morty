@@ -33,16 +33,17 @@ export function sortData(data) {
 
 export const returnPaginationRange = (totalPages, page, siblings) => {
 
-    console.log('totalPages2>>>', totalPages)
-    console.log('page2>>>', page)
+    
+    // console.log('totalPages2>>>', totalPages)
+    // console.log('page2>>>', page)
     
     // const totalPageNoDot = 5;
-    if (totalPages <= 5) {
+    if (totalPages <= 7) {
         return createRangeArr(1, totalPages);
     }
 
     const showLeftDots = page > 4;
-    const showRightDots = page < totalPages - 4;
+    const showRightDots = page <= (totalPages - 4);
 
     if (!showLeftDots && showRightDots) {
         const leftRange = createRangeArr(1, 5);
@@ -50,7 +51,7 @@ export const returnPaginationRange = (totalPages, page, siblings) => {
     }
 
     if (showLeftDots && !showRightDots) {
-        const rightRange = createRangeArr(totalPages - 5, totalPages);
+        const rightRange = createRangeArr(totalPages - 4, totalPages);
         return [1, '... ', ...rightRange];
     }
 

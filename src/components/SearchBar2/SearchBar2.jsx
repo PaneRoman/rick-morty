@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './search-bar2.scss';
 
 
-export default function SearchBar2({searchValue, setSearchName}) {
+export default function SearchBar2({searchValue, handleSearchChange}) {
     console.log('searchValue>>>', searchValue);
 
     const [search, setSearch] = useState(searchValue);
@@ -12,7 +12,7 @@ export default function SearchBar2({searchValue, setSearchName}) {
     const onChange = (event) => {
         const value = event.target.value;
         setSearch(value);
-        setSearchName(value);
+        handleSearchChange(value);
     }
     
     

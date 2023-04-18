@@ -17,18 +17,19 @@ export default function HomePage() {
 
     const [characters, setCharacters] = useState(createFakeSkeletonData());
     const [searchName, setSearchName] = useState(search);
-    const [page, setPage] = useState(37);
+    const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(20);
     const [totalPages, setTotalPages] = useState(null);
 
     console.log('totalPages>>>', totalPages);
+    console.log('page>>>', page);
     /**лимит 20 віддає АПИ https://rickandmortyapi.com/. Для функционала з полем Select, та вибором іншого значення
      * лимита треба використовувати setLimit в цьому хуці
     */
 
     const handlePageChange = (value) => {
 
-        console.log('value>>>', value);
+        console.log('handlePageChangeValue>>>', value);
         
         if(!isNaN(value)) return setPage(value);
         if (value === '&laquo;') setPage(1);
@@ -51,20 +52,40 @@ export default function HomePage() {
         
     }
 
+    const handleSearchChange = (value) => {
+
+        console.log('handleSearchChangeValue>>>', value);
+
+        setSearchName(value);
+        setPage(1);
+    }
+
     const searchValue = searchName || '';
+
+
+    // useEffect(() => {
+
+    //     console.log('test');
+    //     setPage(1);
+
+
+    // }, [searchName])
    
     useEffect(() => {
         
         if (searchName) {
             console.log('searchName2>>>', searchName);
 
-            const querySearchParam = `?name=${searchName}`;
+            const querySearchParam = `?page=${page}&name=${searchName}`;
             console.log('querySearchParam>>>', querySearchParam);
+
+            // ?page=2&name=rick
 
             getData(querySearchParam)
                 // .then(res => console.log(res))
                 .then(data => {
                     const result = sortData(data.results);
+                    console.log('result>>>', result);
                     setCharacters(result);
                     setTotalPages(data.info.pages);
                 })
@@ -76,6 +97,7 @@ export default function HomePage() {
         if (!searchName) {
 
             const queryPage = `?page=${page}`;
+            console.log('queryPage>>>', queryPage);
 
             getData(queryPage)
             // .then(res => console.log(res))
@@ -92,13 +114,16 @@ export default function HomePage() {
     }, [searchName, page])
 
 
+
+
     return (
         <div className="rick-morty-home">
             <img src={rmLogo} className="rick-morty-logo" alt="logo" />
 
             <SearchBar2 
                 searchValue={searchValue}
-                setSearchName={debonce(setSearchName, 700)} />
+                // setSearchName={debonce(setSearchName, 1000)} 
+                handleSearchChange={debonce(handleSearchChange, 1000)} />
             
             <div className="rick-morty-content">
                 {
@@ -112,6 +137,7 @@ export default function HomePage() {
             </div>
 
             <Pagination 
+                // totalPages={Math.floor(totalPages/3)}
                 totalPages={totalPages}
                 page={page}
                 onPageChange={handlePageChange} />

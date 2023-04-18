@@ -16,8 +16,13 @@ export default function Pagination({totalPages, page, onPageChange}) {
                 <li className="page-item"><span className="page-link" onClick={() => onPageChange('&lsaquo;')}>&lsaquo;</span></li>
                 
                 {rangeArr.map(value => {
-                    const active = value === page;
-                    const clazz = active ? 'active' : null;
+                    
+                    const clazz =
+                        (value === page) 
+                            ? 'active' 
+                            : (value === '... ' || value === ' ...') 
+                                ? 'dots' 
+                                : null;
 
                     return <li key={value} className="page-item"><span className={`page-link ${clazz}`} onClick={() => onPageChange(value)}>{value}</span></li>
                 })}
