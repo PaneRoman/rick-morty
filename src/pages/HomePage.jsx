@@ -14,10 +14,12 @@ import './home-page.scss';
 export default function HomePage() {
    
     const search = localStorage.getItem('searchValue') ? JSON.parse(localStorage.getItem('searchValue')) : '';
+    const startPage = localStorage.getItem('currentPage') ? JSON.parse(localStorage.getItem('currentPage')) : 1;
+    console.log('startPage>>>', startPage)
 
     const [characters, setCharacters] = useState(createFakeSkeletonData());
     const [searchName, setSearchName] = useState(search);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(startPage);
     const [limit, setLimit] = useState(20);
     const [totalPages, setTotalPages] = useState(null);
 
@@ -91,6 +93,7 @@ export default function HomePage() {
                 })
 
             localStorage.setItem('searchValue', JSON.stringify(searchName));
+            localStorage.setItem('currentPage', JSON.stringify(page));
 
         } 
         
@@ -109,6 +112,8 @@ export default function HomePage() {
                 })
 
             localStorage.setItem('searchValue', JSON.stringify(searchName));
+            localStorage.setItem('currentPage', JSON.stringify(page));
+
         }
         
     }, [searchName, page])
